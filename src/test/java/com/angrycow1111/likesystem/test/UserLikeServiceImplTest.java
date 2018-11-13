@@ -16,4 +16,9 @@ public class UserLikeServiceImplTest extends UserLikeServiceImpl {
         boolean save = save(userLike);
         System.out.println(save);
     }
+
+    @Test
+    public void sendMsg() {
+
+    }
 }

@@ -22,6 +22,8 @@ public class LikesystemApplicationTests {
         UserLike userLike = new UserLike(null, "001", "002", 0, new Date(), new Date());
         userLikeService.save(userLike);
         Integer id = userLike.getId();
+        userLikeService.SendMsg("测试");
+
     }
 
 }

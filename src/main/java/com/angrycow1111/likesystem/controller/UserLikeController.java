@@ -7,12 +7,12 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -40,7 +40,7 @@ public class UserLikeController {
     }
 
     @ApiOperation( value = "查询点赞信息", notes = "根据ID查询点赞信息" )
-    @GetMapping( "/findOne/{id}" )
+    @GetMapping( "/findOne/{id}")
     public UserLike findOne(@PathVariable( name = "id" ) Integer id) {
 
         return userLikeService.findById(id);

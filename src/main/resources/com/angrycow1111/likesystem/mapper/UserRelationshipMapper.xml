@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper [
+<!ELEMENT mapper (resultMap|sql|select|delete|insert|update)*>
+<!ATTLIST mapper namespace CDATA #REQUIRED>
+<!ELEMENT resultMap (id|result)*>
+<!ATTLIST resultMap id CDATA #REQUIRED>
+<!ATTLIST resultMap type CDATA #REQUIRED>
+<!ELEMENT id (#PCDATA)>
+<!ATTLIST id column CDATA #REQUIRED>
+<!ATTLIST id jdbcType CDATA #REQUIRED>
+<!ATTLIST id property CDATA #REQUIRED>
+<!ELEMENT result (#PCDATA)>
+<!ATTLIST result column CDATA #REQUIRED>
+<!ATTLIST result jdbcType CDATA #REQUIRED>
+<!ATTLIST result property CDATA #REQUIRED>
+<!ELEMENT sql (#PCDATA)>
+<!ATTLIST sql id CDATA #REQUIRED>
+<!ELEMENT select (include)*>
+<!ATTLIST select id CDATA #REQUIRED>
+<!ATTLIST select parameterType CDATA #REQUIRED>
+<!ATTLIST select resultMap CDATA #REQUIRED>
+<!ELEMENT include (#PCDATA)>
+<!ATTLIST include refid CDATA #REQUIRED>
+<!ELEMENT delete (#PCDATA)>
+<!ATTLIST delete id CDATA #REQUIRED>
+<!ATTLIST delete parameterType CDATA #REQUIRED>
+<!ELEMENT insert (trim)*>
+<!ATTLIST insert id CDATA #REQUIRED>
+<!ATTLIST insert keyColumn CDATA #REQUIRED>
+<!ATTLIST insert keyProperty CDATA #REQUIRED>
+<!ATTLIST insert parameterType CDATA #REQUIRED>
+<!ATTLIST insert useGeneratedKeys CDATA #REQUIRED>
+<!ELEMENT trim (if)*>
+<!ATTLIST trim prefix CDATA #REQUIRED>
+<!ATTLIST trim suffix CDATA #REQUIRED>
+<!ATTLIST trim suffixOverrides CDATA #REQUIRED>
+<!ELEMENT if (#PCDATA)>
+<!ATTLIST if test CDATA #REQUIRED>
+<!ELEMENT update (set)*>
+<!ATTLIST update id CDATA #REQUIRED>
+<!ATTLIST update parameterType CDATA #REQUIRED>
+<!ELEMENT set (if)*>
+]>
+<mapper namespace="com.angrycow1111.likesystem.mapper.UserRelationshipMapper">
+  <resultMap id="BaseResultMap" type="com.angrycow1111.likesystem.entity.UserRelationship">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="share_user_id" jdbcType="BIGINT" property="shareUserId" />
+    <result column="share_scene_id" jdbcType="VARCHAR" property="shareSceneId" />
+    <result column="view_user_id" jdbcType="BIGINT" property="viewUserId" />
+    <result column="relationship" jdbcType="INTEGER" property="relationship" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="hot_value" jdbcType="INTEGER" property="hotValue" />
+    <result column="route" jdbcType="VARCHAR" property="route" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, share_user_id, share_scene_id, view_user_id, relationship, gmt_create, gmt_update, 
+    hot_value, route
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_relationship
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from user_relationship
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.angrycow1111.likesystem.entity.UserRelationship" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_relationship (share_user_id, share_scene_id, view_user_id, 
+      relationship, gmt_create, gmt_update, 
+      hot_value, route)
+    values (#{shareUserId,jdbcType=BIGINT}, #{shareSceneId,jdbcType=VARCHAR}, #{viewUserId,jdbcType=BIGINT}, 
+      #{relationship,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP}, 
+      #{hotValue,jdbcType=INTEGER}, #{route,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.angrycow1111.likesystem.entity.UserRelationship" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_relationship
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shareUserId != null">
+        share_user_id,
+      </if>
+      <if test="shareSceneId != null">
+        share_scene_id,
+      </if>
+      <if test="viewUserId != null">
+        view_user_id,
+      </if>
+      <if test="relationship != null">
+        relationship,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtUpdate != null">
+        gmt_update,
+      </if>
+      <if test="hotValue != null">
+        hot_value,
+      </if>
+      <if test="route != null">
+        route,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shareUserId != null">
+        #{shareUserId,jdbcType=BIGINT},
+      </if>
+      <if test="shareSceneId != null">
+        #{shareSceneId,jdbcType=VARCHAR},
+      </if>
+      <if test="viewUserId != null">
+        #{viewUserId,jdbcType=BIGINT},
+      </if>
+      <if test="relationship != null">
+        #{relationship,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null">
+        #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hotValue != null">
+        #{hotValue,jdbcType=INTEGER},
+      </if>
+      <if test="route != null">
+        #{route,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.angrycow1111.likesystem.entity.UserRelationship">
+    <!--@mbg.generated-->
+    update user_relationship
+    <set>
+      <if test="shareUserId != null">
+        share_user_id = #{shareUserId,jdbcType=BIGINT},
+      </if>
+      <if test="shareSceneId != null">
+        share_scene_id = #{shareSceneId,jdbcType=VARCHAR},
+      </if>
+      <if test="viewUserId != null">
+        view_user_id = #{viewUserId,jdbcType=BIGINT},
+      </if>
+      <if test="relationship != null">
+        relationship = #{relationship,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null">
+        gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hotValue != null">
+        hot_value = #{hotValue,jdbcType=INTEGER},
+      </if>
+      <if test="route != null">
+        route = #{route,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.angrycow1111.likesystem.entity.UserRelationship">
+    <!--@mbg.generated-->
+    update user_relationship
+    set share_user_id = #{shareUserId,jdbcType=BIGINT},
+      share_scene_id = #{shareSceneId,jdbcType=VARCHAR},
+      view_user_id = #{viewUserId,jdbcType=BIGINT},
+      relationship = #{relationship,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      hot_value = #{hotValue,jdbcType=INTEGER},
+      route = #{route,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

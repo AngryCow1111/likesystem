@@ -14,5 +14,4 @@ public interface UserLikeService {
      */
     boolean save(UserLike userLike);
     UserLike findById(Integer id);
-    void SendMsg(String msg);
 }

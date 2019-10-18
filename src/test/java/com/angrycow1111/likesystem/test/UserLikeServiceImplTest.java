@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 public class UserLikeServiceImplTest extends UserLikeServiceImpl {
 
     @Test
@@ -15,10 +13,5 @@ public class UserLikeServiceImplTest extends UserLikeServiceImpl {
         UserLike userLike = new UserLike(1, "001", "002", 0, new Date(), new Date());
         boolean save = save(userLike);
         System.out.println(save);
-    }
-
-    @Test
-    public void sendMsg() {
-
     }
 }
